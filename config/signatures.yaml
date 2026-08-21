@@ -1,0 +1,78 @@
+- id: openai-gpt4-sdk
+  provider: openai
+  model_pattern: "gpt-4*"
+  ai_type: llm
+  specificity: high
+  confidence_weight: 0.9
+  applicable_source_types:
+    - source_code
+    - config
+  config_key_patterns:
+    - "*model*"
+    - "*api*"
+
+- id: anthropic-claude3-api
+  provider: anthropic
+  model_pattern: "claude-3*"
+  ai_type: llm
+  specificity: high
+  confidence_weight: 0.95
+  applicable_source_types:
+    - source_code
+    - config
+  config_key_patterns:
+    - "*model*"
+    - "*api*"
+
+- id: generic-langchain-usage
+  provider: langchain
+  model_pattern: "*"
+  ai_type: llm
+  specificity: medium
+  confidence_weight: 0.5
+  applicable_source_types:
+    - source_code
+
+- id: huggingface-transformers-import
+  provider: huggingface
+  model_pattern: "*"
+  ai_type: llm
+  specificity: low
+  confidence_weight: 0.3
+  applicable_source_types:
+    - source_code
+
+- id: openai-generic-config
+  provider: openai
+  model_pattern: "*"
+  ai_type: llm
+  specificity: medium
+  confidence_weight: 0.6
+  applicable_source_types:
+    - config
+  config_key_patterns:
+    - "*provider*"
+
+- id: aws-bedrock-iac
+  provider: aws
+  model_pattern: "*"
+  ai_type: bedrock
+  specificity: high
+  confidence_weight: 0.8
+  applicable_source_types:
+    - iac
+  iac_resource_patterns:
+    - "aws_bedrock_*"
+    - "aws_sagemaker_*"
+
+- id: openai-iac
+  provider: openai
+  model_pattern: "*"
+  ai_type: llm
+  specificity: high
+  confidence_weight: 0.85
+  applicable_source_types:
+    - iac
+  iac_resource_patterns:
+    - "openai_provider_*"
+    - "openai_model_*"
